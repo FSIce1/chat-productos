@@ -172,6 +172,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Fecha</th>
+                            <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Descripción</th>
@@ -192,6 +193,9 @@
 
                         <tr>
                             <td><%= u.getId() %></td>
+                            <td>
+                                <img src="productos/<%=u.getImagen()%>" width="50" height="50">
+                            </td>
                             <td><%= u.getDate()%></td>
                             <td><%= u.getName() %></td>
                             <td><%= u.getPrice() %></td>

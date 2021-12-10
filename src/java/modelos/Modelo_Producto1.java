@@ -17,17 +17,18 @@ public class Modelo_Producto1 {
         
         cadito_ cado = new cadito_(); 
         
-        sql = "INSERT INTO products (name,price,description,date) VALUES (?,?,?,?)";
+        sql = "INSERT INTO products (name,price,description,date,route) VALUES (?,?,?,?,?)";
         
         try {
             
-            Object[] parametros = new Object[4];
+            Object[] parametros = new Object[5];
             
             parametros[0]= producto.getName();
             parametros[1]= producto.getPrice();
             parametros[2]= producto.getDescription();
             parametros[3]= new java.sql.Date(producto.getDate().getTime());
-
+            parametros[4]= producto.getImagen();
+            
             return cado.ejecutar1(sql,parametros);
             
         } catch (SQLException ex) {
@@ -101,6 +102,7 @@ public class Modelo_Producto1 {
                 producto.setPrice(re.getDouble("price"));
                 producto.setDescription(re.getString("description"));
                 producto.setDate(re.getDate("date"));
+                producto.setImagen(re.getString("route"));
 
                 productos.add(producto);
             }

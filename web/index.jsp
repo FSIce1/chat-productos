@@ -98,7 +98,7 @@
                 %>
                 
                 <div class="card" style="width: 18rem; margin: 10px" >
-                    <img class="card-img-top" src="https://www.wikihow.com/images_en/thumb/7/76/Set-up-a-Computer-Step-7.jpg/v4-1200px-Set-up-a-Computer-Step-7.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="productos/<%=u.getImagen()%>" width="100" height="230" alt="<%=u.getImagen()%>">
                     <div class="card-body" style="display: flex; flex-direction: column">
                       <h5 class="card-title text-center"><%=u.getName()%></h5>
                       <p class="card-text"><%=u.getDescription()%></p>

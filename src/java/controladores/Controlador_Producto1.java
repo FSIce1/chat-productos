@@ -5,6 +5,8 @@ import beans.Producto1;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ import modelos.Modelo_Producto1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -83,12 +86,21 @@ public class Controlador_Producto1 extends HttpServlet {
                         if(!fileItem.isFormField()){
                             //File file=new File("C:\\Users\\USUARIO\\Downloads\\CarritoCompras\\web\\productos\\"+fileItem.getName());
                             //File f=new File("C:\\productos\\"+fileItem.getName());
+                            
+                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                            
+                            String nombreFoto = fileItem.getName();
+                            String codigoAleatorio = dtf.format(LocalDateTime.now());
+                            String junto = codigoAleatorio + nombreFoto;
+                            
                             File f = new File("C:\\xampp\\htdocs\\Prueba-CHAT\\web\\productos\\"+fileItem.getName());
                             //File f=new File("D:\\productos\\"+fileItem.getName());
 
                             fileItem.write(f);
                             
-                            producto.setImagen(f.getAbsolutePath());
+                            //producto.setImagen(f.getAbsolutePath());
+                            //producto.setImagen(junto);
+                            producto.setImagen(nombreFoto);
                             
                             
                         } else {
@@ -118,6 +130,8 @@ public class Controlador_Producto1 extends HttpServlet {
                     else 
                         request.setAttribute("ALERTA", "NO_INGRESADO");
 
+                    esperarXsegundos(2);
+                
                     request.getRequestDispatcher("Lista_Productos.jsp").forward(request, response);
 
                 } catch (Exception e) {
@@ -183,8 +197,13 @@ public class Controlador_Producto1 extends HttpServlet {
         
     }
     
-    
-    
+    private void esperarXsegundos(int segundos) {
+        try {
+                Thread.sleep(segundos * 1000);
+        } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
