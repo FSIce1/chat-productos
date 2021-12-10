@@ -148,10 +148,10 @@ public class Controlador_Producto1 extends HttpServlet {
                 
                     producto= new Producto1();
 
-                    producto.setId(Integer.parseInt(request.getParameter("txtId")));
-                    producto.setName(request.getParameter("txtNombre"));
-                    producto.setPrice(Double.parseDouble(request.getParameter("txtPrecio")));
-                    producto.setDescription(request.getParameter("txtDescripcion"));
+                    producto.setId(Integer.parseInt(request.getParameter("txtIdM")));
+                    producto.setName(request.getParameter("txtNombreM"));
+                    producto.setPrice(Double.parseDouble(request.getParameter("txtPrecioM")));
+                    producto.setDescription(request.getParameter("txtDescripcionM"));
 
                     if(mod.modificar(producto)==1)
                         request.setAttribute("ALERTA", "MODIFICADO");

@@ -142,9 +142,8 @@
                                     </div>
                                     
                                     <div class="form-group">                            
-                                        <input type="file" id="txtFoto" name="txtFoto" placeholder="sad">
+                                        <input type="file" required id="txtFoto" name="txtFoto" placeholder="sad">
                                     </div>
-                                    
                                     
                                     
                                     <input type="hidden" id="txtId" name="txtId" value="">
@@ -164,6 +163,64 @@
                     </div>
                 </div>
 
+                <!-- Modal Editar Producto -->
+                <div class="modal fade" id="default-example-modal-editar" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 id="tituloModalEditar" class="modal-title">
+                                    Editar Producto
+                                </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form id="formulario-editar" class="form" method="post" autocomplete="off" action="Controlador_Producto?opcion=D">
+                                    <!-- enctype="multipart/form-data" -->
+                                    <div class="form-group">
+                                        <label class="form-label" for="txtNombre">Nombre</label>
+                                        <input type="text" id="txtNombreM" name="txtNombreM" placeholder="Computadora RXY" required="required" maxlength="80" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="txtPrecio">Precio</label>
+                                        <input type="text" id="txtPrecioM" name="txtPrecioM" pattern="[0-9]+(\.[0-9]{1,2})?%?" placeholder="400.50" required="required" class="form-control">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label" for="txtDescripcion">Descripción</label>
+                                        <textarea id="txtDescripcionM" name="txtDescripcionM" cols="30" rows="3" required="required" placeholder="La mejor computadora..." class="form-control"></textarea>
+                                        <!-- <input type="text" id="txtDescripcion" name="txtDescripcion"  required="required" placeholder="La mejor computadora..." class="form-control"> -->
+                                    </div>
+                                    
+                                    <!--
+                                    <div class="form-group">                            
+                                        <input type="file" required id="txtFoto" name="txtFoto" placeholder="sad">
+                                    </div>
+                                    -->
+                                    
+                                    
+                                    <input type="hidden" id="txtIdM" name="txtIdM" value="">
+
+                                    <!--<input type="hidden" id="opcion" name="opcion" value="I">-->
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button id="btnGuardarM" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                
             
                 <!-- Inicia TABLA -->
                 <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
@@ -201,7 +258,7 @@
                             <td><%= u.getPrice() %></td>
                             <td><%= u.getDescription()%></td>
                             <td>
-                                <input type="image" src="img/editar.png" data-toggle="modal" data-target="#default-example-modal" onclick="Mostrar(<%= u.getId() %>,'<%= u.getName() %>', '<%= u.getPrice() %>', '<%= u.getDescription()%>', 'D')">
+                                <input type="image" src="img/editar.png" data-toggle="modal" data-target="#default-example-modal-editar" onclick="Mostrar(<%= u.getId() %>,'<%= u.getName() %>', '<%= u.getPrice() %>', '<%= u.getDescription()%>', 'D')">
                             </td> <!-- "Mostrar(<%= u.getId() %>,'<%= u.getName() %>',<%= u.getPrice() %>,'<%= u.getDescription() %>','M')" -->
                             <td>
 
@@ -255,18 +312,25 @@
         
          <script type="text/javascript">
             var Mostrar = function(id, name, price, description, estado){
-                document.getElementById("txtId").value = id;
-                document.getElementById("txtNombre").value = name;
-                document.getElementById("txtPrecio").value = price;
-                document.getElementById("txtDescripcion").value = description;
                 
                 if(estado=="I"){
+                    document.getElementById("txtId").value = id;
+                    document.getElementById("txtNombre").value = name;
+                    document.getElementById("txtPrecio").value = price;
+                    document.getElementById("txtDescripcion").value = description;
+                    
                     document.getElementById("tituloModal").innerHTML = "Nuevo Producto";
                     document.getElementById("btnGuardar").innerHTML = "Guardar";
                     
                     document.getElementById("opcion").value = estado;
                     
                 } else {
+                    
+                    document.getElementById("txtIdM").value = id;
+                    document.getElementById("txtNombreM").value = name;
+                    document.getElementById("txtPrecioM").value = price;
+                    document.getElementById("txtDescripcionM").value = description;
+
                     document.getElementById("tituloModal").innerHTML = "Modificar Producto";
                     document.getElementById("btnGuardar").innerHTML = "Modificar";
                 
@@ -285,6 +349,18 @@
             var limpiarDatos = function(){
                 document.getElementById("formulario").reset();
             }
+            
+            // CUANDO CIERRAS EL MODAL
+            $("#default-example-modal-editar").on("hidden.bs.modal", function(){
+                $("#campo-alertas").fadeOut();
+                limpiarDatosEditar();
+            });
+
+            // LIMPIO FORMULARIO
+            var limpiarDatosEditar = function(){
+                document.getElementById("formulario-editar").reset();
+            }
+            
         </script>
         
         <%
