@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sala de chat simple</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    -->
+    
+    <script  type="text/javascript">
+        var ws;
+        var wsUri = "ws://localhost:8080/Prueba-CHAT/echo";
+        ws = new WebSocket(wsUri);
+ 
+        ws.onopen = function(){
+          n=prompt('Por favor, ingrese un apodo:');
+          n=n.substr(0,16);
+          ws.send(n);// Este mensaje debe ser recibido por OnMessage en el servidor
+        };
+ 
+        // Procesamiento de procesamiento de información después de la conexión
+        ws.onmessage = function(message){
+             writeToScreen(message.data); 
+        };
+ 
+        // Supervise el botón enviar para obtener la información enviada y enviar el objeto
+        function button(){
+          message = document.getElementById('in').value;
+          towho = document.getElementById('towho').value + "@";
+          ws.send(towho+message);
+        }   
+ 
+        // Cuando ocurre un error, maneje el error
+        ws.onerror = function (evt){ 
+                writeToScreen('<span style="color:red;">ERROR:</span>'+evt.data);
+                ws.close();
+            };
+ 
+        // Mostrar información en la pantalla actual
+        function writeToScreen(message){
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+        }   
+ 
+        // Ejecuta ws.close al cerrar la página
+        window.onbeforeunload=function (){ 
+             ws.close();
+        }; 
+    </script>
+  </head>
+ 
+  <body>
+    <h1>Sala de chat simple</h1>
+ 
+<div style="width:400px;height:260px; overflow:scroll; border:3px solid; " id="output"> </div>  <br>    
+    <div style="text-align:left;">
+        <form action="">
+            <input id="in" name="message" value="" type="text" style="width:400px;height:60px;  border:3px solid; " >
+            <br><br>
+ 
+            <input onclick="button()" value="enviar" type="button"/>
+                         enviar el objeto:
+            <input id="towho" name="towho" value="all">
+            <br>
+        </form>
+    </div>
+ 
+  </body>
+</html>
