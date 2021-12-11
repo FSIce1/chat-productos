@@ -27,7 +27,7 @@ public class EchoServer {
         // Primero juzga si el valor se pasa por primera vez, el primer valor es el apodo, pasado por OnOpen en el lado web
         if(first){
             this.name = incomingMessage;
-            String message ="Sistema: Bienvenido"+name;
+            String message ="*Sistema* Bienvenido: "+name;
             // El apodo y la ID de sesión se almacenan en HashMap en una correspondencia uno a uno
             userMap.put(session.getId(), name);
             // Transmite el mensaje a todos los usuarios
@@ -64,7 +64,8 @@ public class EchoServer {
                         synchronized (client) {  
                             try {
                                 // Enviar información al usuario especificado
-                                client.session.getBasicRemote().sendText(userMap.get(session.getId())+"Para ti:"+list[1]);
+                                //client.session.getBasicRemote().sendText(userMap.get(session.getId())+"Para ti:"+list[1]);
+                                client.session.getBasicRemote().sendText(userMap.get(session.getId())+": "+list[1]);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }  
@@ -77,7 +78,9 @@ public class EchoServer {
                 // Si es cierto, mostrará que dice xxxxx a xxx en su propia página; de lo contrario, muestre el sistema: no existe tal usuario
                 if(you){
                     try {
-                        session.getBasicRemote().sendText("Derecho propio"+ list[0]+"Decir:"+list[1]);
+                        //session.getBasicRemote().sendText("Derecho propio"+ list[0]+"Decir:"+list[1]);
+                        //this.name = incomingMessage;
+                        session.getBasicRemote().sendText(userMap.get(session.getId())+": "+list[1]);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -97,7 +100,7 @@ public class EchoServer {
     @OnClose
     public void close(Session session){
         // Cuando un usuario cierra la sesión, transmite a otros usuarios
-        String message ="sistema:"+userMap.get(session.getId()) +"Salir del chat grupal";
+        String message ="*Sistema* "+userMap.get(session.getId()) +"Salir del chat grupal";
         userMap.remove(session.getId());
         connect.remove(session.getId());
         for (String key : connect.keySet()) {  
@@ -117,7 +120,6 @@ public class EchoServer {
         }  
     }
  
- 
     // Difundir toda la información
     public static void sendAll(String mess,Session session){  
         String who = null;
@@ -126,7 +128,7 @@ public class EchoServer {
             try {  
                 client = (EchoServer) connect.get(key);  
                 if(key.equalsIgnoreCase(session.getId())){
-                    who = "Les dije a todos:";
+                    who = "Les dije a todos: ";
                 }else{
                     who = userMap.get(session.getId())+"A todos: ";
                 }
