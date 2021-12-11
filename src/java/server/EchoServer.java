@@ -128,7 +128,7 @@ public class EchoServer {
             try {  
                 client = (EchoServer) connect.get(key);  
                 if(key.equalsIgnoreCase(session.getId())){
-                    who = "Les dije a todos: ";
+                    who = "A todos: ";
                 }else{
                     who = userMap.get(session.getId())+"A todos: ";
                 }

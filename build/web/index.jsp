@@ -29,6 +29,55 @@
         <link rel="stylesheet" media="screen, print" href="css/app.bundle.css">
 
         <title>Lista de Productos</title>
+        
+        
+        <meta name="keywords" content="keyword1,keyword2,keyword3">
+    
+        <link rel="stylesheet" media="screen, print" href="css/chat.css">
+    
+        <script  type="text/javascript">
+            var ws;
+            var wsUri = "ws://localhost:8080/Prueba-CHAT/echo";
+            ws = new WebSocket(wsUri);
+
+            ws.onopen = function(){
+              n=prompt('Por favor, ingrese un nombre:');
+              n=n.substr(0,16);
+              ws.send(n);// Este mensaje debe ser recibido por OnMessage en el servidor
+            };
+
+            // Procesamiento de procesamiento de información después de la conexión
+            ws.onmessage = function(message){
+                 writeToScreen(message.data); 
+            };
+
+            // Supervise el botón enviar para obtener la información enviada y enviar el objeto
+            function button(){
+              message = document.getElementById('in').value;
+              towho = document.getElementById('towho').value + "@";
+              ws.send(towho+message);
+            }   
+
+            // Cuando ocurre un error, maneje el error
+            ws.onerror = function (evt){ 
+                    writeToScreen('<span style="color:red;">ERROR:</span>'+evt.data);
+                    ws.close();
+                };
+
+            // Mostrar información en la pantalla actual
+            function writeToScreen(message){
+                var pre = document.createElement("p");
+                pre.style.wordWrap = "break-word";
+                pre.innerHTML = message;
+                output.appendChild(pre);
+            }   
+
+            // Ejecuta ws.close al cerrar la página
+            window.onbeforeunload=function (){ 
+                 ws.close();
+            }; 
+        </script>
+        
     </head>
 
     <body>
@@ -111,6 +160,38 @@
                 %>
             </div>
         </main>
+            
+        
+             
+        <div id="chatBot_XX" class="chatBot_XX">
+            <div class="chat_XX">
+                <h1 style="color: white">Chat</h1>
+
+                <div class="buzon_XX" id="output"> </div>  <br>    
+                <div style="text-align:left;">
+                    <form action="">
+                        <input class="mensaje_XX" id="in" name="message" value="" type="text">
+                        <br><br>
+
+
+                        <div class="envio_XX">
+
+                            <input onclick="button()" class="boton_XX" value="enviar" type="button"/>
+
+                            <div class="envio__persona_XX">
+                                <span class="envia_persona_XX span_flex_XX">&nbsp;Enviar a la persona: &nbsp;</span> 
+                                <input id="towho" name="towho" value="all">
+                            </div>
+                        </div>
+
+                        <br>
+                    </form>
+                </div>
+            </div>
+            
+        </div>    
+           
+        <button id="agregar" type="button" onclick="ocultarMostrar()" class="boton_XX chatear_XX">Chatear...</button>
 
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -120,6 +201,16 @@
         
         <script src="js/vendors.bundle.js"></script>
         <script src="js/app.bundle.js"></script>
+        
+        <script>
+            function ocultarMostrar(){
+                if(document.getElementById('chatBot_XX').style.visibility  === "visible"){
+                    document.getElementById('chatBot_XX').style.visibility  = "hidden";
+                }else{
+                document.getElementById('chatBot_XX').style.visibility  = "visible";
+                }
+            }
+        </script>
 
     </body>
 
