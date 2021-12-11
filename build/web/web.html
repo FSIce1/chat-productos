@@ -61,17 +61,26 @@
     
     <div class="chatBot">
         <div class="chat">
-            <h1>Chat</h1>
+            <h1 style="color: white">Chat</h1>
  
-            <div style="width:400px;height:260px; overflow:scroll; border:3px solid; " id="output"> </div>  <br>    
+            <div class="buzon" id="output"> </div>  <br>    
             <div style="text-align:left;">
                 <form action="">
-                    <input id="in" name="message" value="" type="text" style="width:400px;height:60px;  border:3px solid; " >
+                    <input class="mensaje" id="in" name="message" value="" type="text">
                     <br><br>
 
-                    <input onclick="button()" value="enviar" type="button"/>
-                                 enviar el objeto:
-                    <input id="towho" name="towho" value="all">
+                    
+                    <div class="envio">
+                        
+                        <input onclick="button()" class="boton" value="enviar" type="button"/>
+
+                        <div class="envio__persona">
+                            <span class="envia_persona span_flex">&nbsp;Enviar a la persona: &nbsp;</span> 
+                            <input id="towho" name="towho" value="all">
+                        </div>
+                    </div>
+                    
+                    
                     <br>
                 </form>
             </div>
