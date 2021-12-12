@@ -5,6 +5,9 @@
  */
 package datos;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -24,6 +27,22 @@ public class cadito_ {
     
     
     Connection cn;
+    
+    public int ConexionMongoDB() {
+            DB db;
+        DBCollection tabla;
+            try{
+                Mongo mongo = new Mongo("localhost",27017);
+                db=mongo.getDB("bd_sales_products");
+                tabla=db.getCollection("messages");
+                
+                return 1;
+            } catch (Exception ex) {
+                System.out.println(ex);
+                //Logger.getLogger(ConexionMongoDB.class.getName()).log(Level.SEVERE, null, ex);
+                return 0;
+            }
+    }
     
     public Connection conexion(){
     
