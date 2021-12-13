@@ -8,6 +8,7 @@ package beans;
 import datos.cadito_;
 import datos.conexion_mongo;
 import java.util.List;
+import modelos.Modelo_Mensaje;
 
 /**
  *
@@ -19,18 +20,28 @@ public class Prueba {
         
         try {
           
-            conexion_mongo cado = new conexion_mongo(); 
+            Modelo_Mensaje modelo = new Modelo_Mensaje();
             
-            cado.ConexionMongoDB();
-            cado.agregarMensajes();
-            List<Mensajes> mensajes = cado.listaMensajes();
+            //Mensajes mensaje = new Mensajes("juancho", "Mensaje de prueba");
+            
+            /*
+            if(modelo.insertar(mensaje)==1)
+                System.out.println("Ingresado");
+            else 
+                System.out.println("No ingresado");
+            */
+            
+            //cado.ConexionMongoDB();
+            //cado.agregarMensajes();
+            List<Mensajes> mensajes = modelo.listaMensajes();
+            
             
             for (int i = 0; i < mensajes.size(); i++) {
                 System.out.println("\n===Mensaje "+(i+1)+"===");
                 System.out.println("User: "+mensajes.get(i).getUser());
                 System.out.println("Mensaje: "+mensajes.get(i).getMessage());
             }
-
+            
         } catch (Exception e) {
         }
         

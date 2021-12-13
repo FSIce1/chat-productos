@@ -15,6 +15,7 @@ public class EchoServer {
     // La clave userMap es el ID de la sesión, el valor es el nombre de usuario
     private static final HashMap<String,String> userMap = new HashMap<String,String>();
     private Session session;
+
     @OnOpen
     public void start(Session session){
         this.session = session; // Obtén Seession y guárdalo en SashMap

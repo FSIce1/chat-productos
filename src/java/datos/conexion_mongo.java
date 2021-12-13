@@ -45,48 +45,4 @@ public class conexion_mongo {
             }
     }
     
-    public int agregarMensajes(){
-        try {
-            BasicDBObject document = new BasicDBObject();
-            
-            document.put("user", "'juan'");
-            document.put("message", "'hola, una consulta'");
-            
-            tabla.insert(document);
-            
-            return 1;
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-    
-    public List listaMensajes(){
-    
-        try {
-
-            List<Mensajes> mensajes = new ArrayList<>();
-
-            BasicDBObject query = new BasicDBObject();
-            BasicDBObject field = new BasicDBObject();
-            
-            DBCursor cursor = db.getCollection("messages").find(query,field);
-        
-            while (cursor.hasNext()) {
-                Mensajes mensaje = new Mensajes();
-                
-                BasicDBObject obj = (BasicDBObject) cursor.next();
-                mensaje.setUser(obj.getString("user"));
-                mensaje.setMessage(obj.getString("message"));
-                
-                mensajes.add(mensaje);
-            }
-        
-            return mensajes;
-
-        } catch (Exception e) {
-            return null;
-        }
-        
-    }
-    
 }
