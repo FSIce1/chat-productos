@@ -71,8 +71,8 @@ public class EchoServer {
                                 // Enviar información al usuario especificado
                                 //client.session.getBasicRemote().sendText(userMap.get(session.getId())+"Para ti:"+list[1]);
                                 
-                                mod = new Modelo_Mensaje();
-                                mod.insertar(new Mensajes(list[0],list[1],userMap.get(session.getId())));
+                                //mod = new Modelo_Mensaje();
+                                //mod.insertar(new Mensajes(list[0],list[1],userMap.get(session.getId())));
                                 
                                 client.session.getBasicRemote().sendText(userMap.get(session.getId())+": "+list[1]);
                             } catch (IOException e) {
@@ -89,7 +89,7 @@ public class EchoServer {
                     try {
                         //session.getBasicRemote().sendText("Derecho propio"+ list[0]+"Decir:"+list[1]);
                         //this.name = incomingMessage;
-                        System.out.println("YO? "+list[0]);
+                        
                         mod = new Modelo_Mensaje();
                         mod.insertar(new Mensajes(list[0],list[1],userMap.get(session.getId())));
 
