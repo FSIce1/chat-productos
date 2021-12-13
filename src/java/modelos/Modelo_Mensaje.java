@@ -34,6 +34,7 @@ public class Modelo_Mensaje {
             
             document.put("user", mensaje.getUser());
             document.put("message", mensaje.getMessage());
+            document.put("user_remitente", mensaje.getUser_remitente());
             
             tabla.insert(document);
             
@@ -65,6 +66,7 @@ public class Modelo_Mensaje {
                 BasicDBObject obj = (BasicDBObject) cursor.next();
                 mensaje.setUser(obj.getString("user"));
                 mensaje.setMessage(obj.getString("message"));
+                mensaje.setUser_remitente(obj.getString("user_remitente"));
                 
                 mensajes.add(mensaje);
             }

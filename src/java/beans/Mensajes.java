@@ -5,6 +5,7 @@ public class Mensajes {
     
     private String user;
     private String message;
+    private String user_remitente;
 
     public Mensajes() {
     }
@@ -12,6 +13,12 @@ public class Mensajes {
     public Mensajes(String user, String message) {
         this.user = user;
         this.message = message;
+    }
+
+    public Mensajes(String user, String message, String user_remitente) {
+        this.user = user;
+        this.message = message;
+        this.user_remitente = user_remitente;
     }
 
     public String getUser() {
@@ -28,6 +35,14 @@ public class Mensajes {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getUser_remitente() {
+        return user_remitente;
+    }
+
+    public void setUser_remitente(String user_remitente) {
+        this.user_remitente = user_remitente;
     }
     
 }

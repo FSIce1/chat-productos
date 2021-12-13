@@ -56,6 +56,8 @@
               message = document.getElementById('in').value;
               towho = document.getElementById('towho').value + "@";
               ws.send(towho+message);
+                
+              message = document.getElementById('in').value = "";
             }   
 
             // Cuando ocurre un error, maneje el error
@@ -95,39 +97,6 @@
                                 <a class="nav-item nav-link" href="Controlador_Producto?opcion=A">Lista de Producto</a>
                             </div>
                         </div>
-                        <!--
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div class="collapse navbar-collapse" id="navbarCollapse">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item dropdown">
-                                    <img src="img/cart.jpeg" class="nav-link dropdown-toggle img-fluid" height="70px"
-                                        width="70px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"></img>
-                                    <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
-                                        <table id="lista-carrito" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Imagen</th>
-                                                    <th>Nombre</th>
-                                                    <th>Precio</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-
-                                        <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                                        <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
-                                            Compra</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        -->
                     </nav>
                 </div>
             </div>
