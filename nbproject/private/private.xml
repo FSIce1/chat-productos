@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Prueba-CHAT/src/java/beans/Mensajes.java</file>
-            <file>file:/C:/xampp/htdocs/Prueba-CHAT/web/index.jsp</file>
-            <file>file:/C:/xampp/htdocs/Prueba-CHAT/src/java/server/EchoServer.java</file>
-            <file>file:/C:/xampp/htdocs/Prueba-CHAT/src/java/datos/conexion_mongo.java</file>
-            <file>file:/C:/xampp/htdocs/Prueba-CHAT/src/java/beans/Prueba.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/chat-productos/src/java/datos/cadito_.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/chat-productos/src/java/controladores/Controlador_Producto1.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/chat-productos/src/java/beans/Producto1.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/chat-productos/web/Lista_Productos.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/chat-productos/src/java/modelos/Modelo_Producto1.java</file>
         </group>
     </open-files>
 </project-private>
