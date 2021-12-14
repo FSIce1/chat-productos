@@ -17,17 +17,18 @@ public class Modelo_Producto1 {
         
         cadito_ cado = new cadito_(); 
         
-        sql = "INSERT INTO products (name,price,description,date,route) VALUES (?,?,?,?,?)";
+        sql = "INSERT INTO products (name,price,description,date,route, cantidad) VALUES (?,?,?,?,?, ?)";
         
         try {
             
-            Object[] parametros = new Object[5];
+            Object[] parametros = new Object[6];
             
             parametros[0]= producto.getName();
             parametros[1]= producto.getPrice();
             parametros[2]= producto.getDescription();
             parametros[3]= new java.sql.Date(producto.getDate().getTime());
             parametros[4]= producto.getImagen();
+            parametros[5]= producto.getCantidad();
             
             return cado.ejecutar1(sql,parametros);
             
@@ -43,16 +44,18 @@ public class Modelo_Producto1 {
         
         cadito_ cado = new cadito_(); 
         
-        sql = "UPDATE products set name=?,price=? ,description=? WHERE id=?";
+        sql = "UPDATE products set name=?,price=? ,description=? ,cantidad=? WHERE id=?";
         
             try {
             
-            Object[] parametros = new Object[4];
+            Object[] parametros = new Object[5];
             
             parametros[0]=producto.getName();
             parametros[1]=producto.getPrice();
             parametros[2]=producto.getDescription();
-            parametros[3]=producto.getId();
+            parametros[3]=producto.getCantidad();
+            parametros[4]=producto.getId();
+           
             
             return cado.ejecutar1(sql,parametros);
             
@@ -103,6 +106,7 @@ public class Modelo_Producto1 {
                 producto.setDescription(re.getString("description"));
                 producto.setDate(re.getDate("date"));
                 producto.setImagen(re.getString("route"));
+                producto.setCantidad(re.getInt("cantidad"));
 
                 productos.add(producto);
             }

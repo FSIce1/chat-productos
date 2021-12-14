@@ -93,7 +93,7 @@ public class Controlador_Producto1 extends HttpServlet {
                             String codigoAleatorio = dtf.format(LocalDateTime.now());
                             String junto = codigoAleatorio + nombreFoto;
                             
-                            File f = new File("C:\\xampp\\htdocs\\Prueba-CHAT\\web\\productos\\"+fileItem.getName());
+                            File f = new File("C:\\Users\\Javier\\Documents\\NetBeansProjects\\chat-productos\\web\\productos\\"+fileItem.getName());
                             //File f=new File("D:\\productos\\"+fileItem.getName());
 
                             fileItem.write(f);
@@ -120,7 +120,8 @@ public class Controlador_Producto1 extends HttpServlet {
                     
                     producto.setName(lista.get(0));
                     producto.setPrice(Double.parseDouble(lista.get(1)));
-                    producto.setDescription(lista.get(2));
+                    producto.setCantidad(Integer.parseInt(lista.get(2)) );
+                    producto.setDescription(lista.get(3));
                     
                     Date d = new Date();
                     producto.setDate(d);
@@ -152,6 +153,7 @@ public class Controlador_Producto1 extends HttpServlet {
                     producto.setName(request.getParameter("txtNombreM"));
                     producto.setPrice(Double.parseDouble(request.getParameter("txtPrecioM")));
                     producto.setDescription(request.getParameter("txtDescripcionM"));
+                    producto.setCantidad(Integer.parseInt(request.getParameter("txtCantidadM")));
 
                     if(mod.modificar(producto)==1)
                         request.setAttribute("ALERTA", "MODIFICADO");

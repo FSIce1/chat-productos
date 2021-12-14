@@ -20,16 +20,18 @@ public class Producto1 {
     private Date date;
     private String description;
     private String imagen;
+    private int cantidad;
     
     public Producto1() {
     }
 
-    public Producto1(int id, String name, Double price, Date date, String description) {
+    public Producto1(int id, String name, Double price, Date date, String description, int cantidad) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.date = date;
         this.description = description;
+        this.cantidad = cantidad;
     }
     
     public int getId() {
@@ -78,6 +80,14 @@ public class Producto1 {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+    
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
 }

@@ -36,8 +36,8 @@ public class cadito_ {
     try {
         Class.forName("com.mysql.jdbc.Driver");
             this.cn = DriverManager.getConnection(
-                    //"jdbc:mysql://localhost:3309/bd_sales_products", 
-                    "jdbc:mysql://localhost:3306/bd_sales_products", 
+                    "jdbc:mysql://localhost:3309/bd_sales_products", 
+                    //"jdbc:mysql://localhost:3306/bd_sales_products", 
                     "root", "");
             return this.cn;
         } catch (ClassNotFoundException | SQLException e) {

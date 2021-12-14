@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="col-6 text-right">
-                        <button type="button" style="width: 150px" class="btn btn-primary" data-toggle="modal" data-target="#default-example-modal" onclick="Mostrar('','','','','I')" >Agregar</button>
+                        <button type="button" style="width: 150px" class="btn btn-primary" data-toggle="modal" data-target="#default-example-modal" onclick="Mostrar('','','','','','I')" >Agregar</button>
                         <br><br> 
                     </div>
                 </div>
@@ -135,6 +135,11 @@
                                     <div class="form-group">
                                         <label class="form-label" for="txtPrecio">Precio</label>
                                         <input type="text" id="txtPrecio" name="txtPrecio" pattern="[0-9]+(\.[0-9]{1,2})?%?" placeholder="400.50" required="required" class="form-control">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label" for="txtPrecio">Cantidad</label>
+                                        <input type="text" id="txtCantidad" name="txtCantidad"  placeholder="10" required="required" class="form-control">
                                     </div>
                                     
                                     <div class="form-group">
@@ -192,6 +197,11 @@
                                     </div>
                                     
                                     <div class="form-group">
+                                        <label class="form-label" for="txtCantidadM">Cantidad</label>
+                                        <input type="text" id="txtCantidadM" name="txtCantidadM" placeholder="15" required="required" class="form-control">
+                                    </div>
+                                    
+                                    <div class="form-group">
                                         <label class="form-label" for="txtDescripcion">Descripción</label>
                                         <textarea id="txtDescripcionM" name="txtDescripcionM" cols="30" rows="3" required="required" placeholder="La mejor computadora..." class="form-control"></textarea>
                                         <!-- <input type="text" id="txtDescripcion" name="txtDescripcion"  required="required" placeholder="La mejor computadora..." class="form-control"> -->
@@ -234,6 +244,7 @@
                             <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Precio</th>
+                            <th>Cantidad</th>
                             <th>Descripción</th>
                             <th class="disabled-sorting">Modificar</th>
                             <th class="disabled-sorting">Eliminar</th>
@@ -258,9 +269,10 @@
                             <td><%= u.getDate()%></td>
                             <td><%= u.getName() %></td>
                             <td><%= u.getPrice() %></td>
+                            <td><%= u.getCantidad() %></td>
                             <td><%= u.getDescription()%></td>
                             <td>
-                                <input type="image" src="img/editar.png" data-toggle="modal" data-target="#default-example-modal-editar" onclick="Mostrar(<%= u.getId() %>,'<%= u.getName() %>', '<%= u.getPrice() %>', '<%= u.getDescription()%>', 'D')">
+                                <input type="image" src="img/editar.png" data-toggle="modal" data-target="#default-example-modal-editar" onclick="Mostrar(<%= u.getId() %>,'<%= u.getName() %>', '<%= u.getPrice() %>', '<%= u.getDescription()%>', '<%= u.getCantidad() %>', 'D')">
                             </td> <!-- "Mostrar(<%= u.getId() %>,'<%= u.getName() %>',<%= u.getPrice() %>,'<%= u.getDescription() %>','M')" -->
                             <td>
 
@@ -313,12 +325,13 @@
         <script src="js/datagrid/datatables/datatables.export.js"></script>
         
          <script type="text/javascript">
-            var Mostrar = function(id, name, price, description, estado){
+            var Mostrar = function(id, name, price, description, cantidad, estado){
                 
                 if(estado=="I"){
                     document.getElementById("txtId").value = id;
                     document.getElementById("txtNombre").value = name;
                     document.getElementById("txtPrecio").value = price;
+                    
                     document.getElementById("txtDescripcion").value = description;
                     
                     document.getElementById("tituloModal").innerHTML = "Nuevo Producto";
@@ -332,6 +345,7 @@
                     document.getElementById("txtNombreM").value = name;
                     document.getElementById("txtPrecioM").value = price;
                     document.getElementById("txtDescripcionM").value = description;
+                    document.getElementById("txtCantidadM").value = cantidad;
 
                     document.getElementById("tituloModal").innerHTML = "Modificar Producto";
                     document.getElementById("btnGuardar").innerHTML = "Modificar";
