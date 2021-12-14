@@ -5,20 +5,9 @@
  */
 package datos;
 
-import beans.Mensajes;
-import beans.Producto1;
-import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.client.MongoDatabase;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class conexion_mongo {
     

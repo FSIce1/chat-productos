@@ -92,7 +92,9 @@
                         
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
+                                <!--
                                 <a class="nav-item nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                                -->
                                 <a class="nav-item nav-link active" href="Controlador_Producto?opcion=L">Productos</a>
                                 <a class="nav-item nav-link" href="Controlador_Producto?opcion=A">Lista de Producto</a>
                             </div>
@@ -131,22 +133,26 @@
         </main>
             
         
-             
+        <!-- CHAT --> 
         <div id="chatBot_XX" class="chatBot_XX">
             <div class="chat_XX">
                 <h1 style="color: white">Chat</h1>
 
+                <!-- Buzón dónde se muestran los mensajes-->
                 <div class="buzon_XX" id="output"> </div>  <br>    
                 <div style="text-align:left;">
                     <form action="">
+                        <!-- Caja dónde se envían los mensajes -->
                         <input class="mensaje_XX" id="in" name="message" value="" type="text">
                         <br><br>
 
 
                         <div class="envio_XX">
 
+                            <!--  Botón para enviar -->
                             <input onclick="button()" class="boton_XX" value="enviar" type="button"/>
 
+                            <!-- A que persona le vamos a enviar -->
                             <div class="envio__persona_XX">
                                 <span class="envia_persona_XX span_flex_XX">&nbsp;Enviar a la persona: &nbsp;</span> 
                                 <input id="towho" name="towho" value="all">
@@ -160,6 +166,7 @@
             
         </div>    
            
+        <!-- Botón chatear -->
         <button id="agregar" type="button" onclick="ocultarMostrar()" class="boton_XX chatear_XX">Chatear...</button>
 
         <script src="js/jquery-3.4.1.min.js"></script>

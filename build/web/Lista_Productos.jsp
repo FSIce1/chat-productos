@@ -37,7 +37,9 @@
                         
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
+                                <!--
                                 <a class="nav-item nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                                -->
                                 <a class="nav-item nav-link" href="Controlador_Producto?opcion=L">Productos</a>
                                 <a class="nav-item nav-link active" href="Controlador_Producto?opcion=A">Lista de Producto</a>
                             </div>

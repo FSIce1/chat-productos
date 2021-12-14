@@ -91,6 +91,9 @@ public class EchoServer {
                         //this.name = incomingMessage;
                         
                         mod = new Modelo_Mensaje();
+                        // list[0] -> Recibe el mensaje
+                        // list[1] -> Mensaje
+                        // userMap.get(se...) -> Envía el mensaje
                         mod.insertar(new Mensajes(list[0],list[1],userMap.get(session.getId())));
 
                         session.getBasicRemote().sendText(userMap.get(session.getId())+": "+list[1]); // Envía mensaje
