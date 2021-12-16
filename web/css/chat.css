@@ -14,7 +14,6 @@
     width: 450px;
     padding-top: 10px; 
     margin-right: 10px;
-    margin-bottom: 330px;
     
     display: flex;
     flex-direction: column;
@@ -22,6 +21,7 @@
     border-radius: 25px;
     
     position: fixed;
+    bottom: 0;
 }
 
 .buzon_XX {
